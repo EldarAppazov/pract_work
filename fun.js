@@ -83,3 +83,41 @@ function findMax(a, b, c, d) {
     }
 }
 console.log(findMax(1, 2, 3, 10));
+
+// Числа фибоначи https://ru.wikipedia.org/wiki/Числа_Фибоначчи
+// создайте функцию, которая будет принимать в себя один аргумент 
+// целое положительное число. она должна возвращать строку,
+// в которой будет через пробел введены числа Фибоначи. Причем 
+// их количество должно быть равно переданному аргументу. Если переданный аргумент 
+// не число - вернуть строку.
+
+function fibon(c) {
+    let fibNumber = '0 1';
+    let a = 1;
+    let aOld = 0;
+    let b = 0;
+    if (typeof(c) == 'number' && c % 1 == 0) {
+        if (c >= 2) {
+            for (let i = 0; i < c - 2; i++) {
+                b = a + aOld;
+                aOld = a;
+                a = b;
+                fibNumber = `${fibNumber} ${b}`;
+            }
+        } else if (c === 1) {
+            fibNumber = `0`;
+        } else if (c === 0) {
+            fibNumber = ``;
+        }
+        return fibNumber;
+    } else {
+        return '';
+    }
+}
+console.log(fibon(5));
+console.log(fibon(15));
+console.log(fibon(2));
+console.log(fibon(1));
+console.log(fibon(0));
+console.log(fibon(2.2));
+console.log(fibon('2'));
