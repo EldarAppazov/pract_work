@@ -32,3 +32,54 @@ function getCoupeNumber(a) {
     return ansver;
 }
 console.log(getCoupeNumber(10));
+
+// создайте функцию,которая принимает в себя целое число минут и возвращает 
+// время в нужном формате строки. Обратите внимание на окончание слова 
+// час - оно меняеться в зависимости от цыфры. если вместо аргумента приходит не число 
+// дробное или отрицательное число - функция возвращает строку "ошибка проверьте данные"
+// getTimeFromMinutes(150) => "это 2 часа и 30 мин"
+// getTimeFromMinutes(50) => "это 0 часов и 30 мин"
+// getTimeFromMinutes(0) => "это 0 часа и 0 мин"
+// getTimeFromMinutes(-150) => "ошибка проверьте данные"
+function getTimeFromMinutes(num) {
+    let hourName;
+    let result;
+    if (typeof(num) == 'number' && num % 1 === 0 && num >= 0) {
+        let hour = Math.floor(num / 60);
+        let min = num - hour * 60;
+        if (hour == 1) {
+            hourName = 'час';
+        } else if (hour === 0) {
+            hourName = 'часов';
+        } else if (hour < 5) {
+            hourName = 'часа';
+        } else if (hour >= 5 && hour < 21) {
+            hourName = 'часов';
+        }
+        result = `Это ${hour} ${hourName} и ${min} минут`;
+    } else {
+        result = 'Ошибка, проверьте данные';
+    }
+    return result;
+}
+
+console.log(getTimeFromMinutes(150));
+console.log(getTimeFromMinutes(50));
+console.log(getTimeFromMinutes(0));
+console.log(getTimeFromMinutes(-150));
+
+// напишите функцию, которая принимает в себя 4 числа и возвращает самое большое
+// из них. если один аргумент не являеться числом или их меньше 4 то возращаеться 
+// 0. дробные числа разрешены.
+// findMax(1,5,6.6,11)=>11
+// findMax(1,5,'6.6',11)=>0
+function findMax(a, b, c, d) {
+
+    if (typeof(a) == 'number' && typeof(b) == 'number' && typeof(c) == 'number' && typeof(d) == 'number') {
+        let maxNunber = Math.max(a, b, c, d);
+        return maxNunber;
+    } else {
+        return 0;
+    }
+}
+console.log(findMax(1, 2, 3, 10));
